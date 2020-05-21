@@ -6,7 +6,7 @@ class List
         @todos = []
     end
 
-    def add_todo(name)
+    def add_todo(name, deadline)
         @todos << Item.new(name, deadline)
     end
 

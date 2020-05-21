@@ -1,14 +1,13 @@
 class Item
-    #done
     attr_accessor :name
-    attr_reader :done
+    attr_reader :done, :deadline
     def initialize(name, deadline)
         @name = name
-        @done = false
         @deadline = deadline
+        @done = false
     end
 
     def toggle
-        @done = true
+        @done = !@done
     end
 end
