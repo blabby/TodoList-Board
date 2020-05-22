@@ -1,20 +1,45 @@
+require_relative "item.rb"
 class List
-    #done
-    attr_accessor :name, :todos
-    def initialize(name)
-        @name = name
+    attr_accessor :label, :todos
+    def initialize(label)
+        @label = label
         @todos = []
     end
 
-    def add_todo(name, deadline)
-        @todos << Item.new(name, deadline)
+    def display
+        puts "----------------------------------------------------"
+        puts "                       #{@label}                    "
+        puts "----------------------------------------------------"
+        @todos.each_with_index do |todo, i|
+        puts "Index: #{i} | Title: #{todo.name} | Deadline: #{todo.deadline} | Done: #{complete?(todo.done)} |"
+        end
     end
 
-    def delete_todo(index)
+    def description(i)
+        puts "Index: #{i} | Description: #{@todos[i].description} |"
+    end
+
+    def complete?(todo)
+        if todo == false
+            "[]"
+        else
+            "[X]"
+        end
+    end
+
+    def add_item(name, deadline, description)
+        @todos << Item.new(name, deadline, description)
+    end
+
+    def delete_item(index)
         @todos.delete_at(index)
     end
 
-    def toggle_todo(index)
-        @todos[index].toggle
+    def toggle_complete(index)
+        @todos[index].done = !@todos[index].done
+    end
+
+    def purge_complete
+        @todos.delete_if {|item| item.done == true}
     end
 end
