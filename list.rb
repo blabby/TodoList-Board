@@ -3,7 +3,7 @@ class List
     attr_accessor :label, :todos
     def initialize(label)
         @label = label
-        @todos = []
+        @todos = [Item.new("test", "1111-10-10", "test2")]
     end
 
     def display
@@ -37,6 +37,10 @@ class List
 
     def toggle_complete(index)
         @todos[index].done = !@todos[index].done
+    end
+
+    def toggle(index)
+        @todos[index].toggle
     end
 
     def purge_complete

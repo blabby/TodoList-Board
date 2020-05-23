@@ -15,7 +15,7 @@ class Item
         @name = title
         @deadline = deadline
         @description = description
-        @done = true
+        @done = false
     end
 
     def toggle
