@@ -3,7 +3,7 @@ class List
     attr_accessor :label, :todos
     def initialize(label)
         @label = label
-        @todos = [Item.new("test", "1111-10-10", "test2")]
+        @todos = []
     end
 
     def display
